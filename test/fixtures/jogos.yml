@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  dia: MyString
+  hora: MyString
+  pontos: 1.5
+
+two:
+  dia: MyString
+  hora: MyString
+  pontos: 1.5

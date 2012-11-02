@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  modelo: MyString
+  versao_app: MyString
+  device_id: MyString
+
+two:
+  modelo: MyString
+  versao_app: MyString
+  device_id: MyString

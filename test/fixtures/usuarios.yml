@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  nome: MyString
+  sobrenome: MyString
+  apelido: MyString
+  pontos_criador: 1.5
+  pontos_jogador: 1.5
+
+two:
+  nome: MyString
+  sobrenome: MyString
+  apelido: MyString
+  pontos_criador: 1.5
+  pontos_jogador: 1.5

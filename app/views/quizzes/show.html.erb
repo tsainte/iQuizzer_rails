@@ -1,0 +1,7 @@
+<h1>Exibindo Quiz</h1>
+   <p>
+     <b>Titulo: </b>
+     <%= @quiz.titulo %>
+</p>
+   <%= link_to 'Editar', { action: 'edit', id: @quiz } %>
+   <%= link_to 'Voltar', { action: 'index' } %>
