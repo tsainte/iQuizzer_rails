@@ -1,6 +1,6 @@
 class QuizzesController < ApplicationController
   def index
-    @quizzes = Quiz.order("titulo")
+    @quizzes = Quiz.all
   end
   
   def show
@@ -12,11 +12,13 @@ class QuizzesController < ApplicationController
   end
   
   def create
+    print "createeeeeeeeeeeeeeee"
     @quiz = Quiz.new(params[:quiz])
     if @quiz.save
-      redirect_to(action: "show", id: @quiz)
+      redirect_to @quiz, notice: "Sucesso!"
     else
-      render action: "new"
+     # render action: "new"
+     render :new
     end
   end
   
@@ -27,9 +29,11 @@ class QuizzesController < ApplicationController
   def update
     @quiz = Quiz.find(params[:id])
     if (@quiz.update_attributes(params[:quiz]))
-      redirect_to(action: "show", id: @quiz)
+      #redirect_to(action: "show", id: @quiz)
+      redirect_to @quiz, notice: "Sucesso!"
     else
       render action: "edit"
+      #render :edit
     end
   end
   

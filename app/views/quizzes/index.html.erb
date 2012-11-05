@@ -1,19 +1,13 @@
-<h1>Listagem de Quizzes</h1>
-<table> <tr>
-         <th>Titulo</th>
-</tr>
-<% @quizzes.each do |quiz| %>
-     <tr>
-       <td><%= quiz.titulo %></td>
+<h1>Quizzes</h1>
 
-	       <td>
-          <%= link_to 'Mostrar', action: 'show', id: quiz %>
-</td> <td>
-         <%= link_to 'Editar', action: 'edit', id: quiz %>
-</td> <td>
-         <%= link_to 'Deletar', action: 'destroy', id: quiz %>
-</td> </tr>
+<% @quizzes.each do |quiz| %>
+  <div class="article">
+	  <!-- <h2><%= link_to quiz.titulo, action: 'show', id: quiz %></h2>  -->
+	  <h2><%= link_to quiz.titulo, quiz %></h2>
+	  
+    <%= pluralize(quiz.perguntas.size, "pergunta") %>
+  </div>
 <% end %>
-   </table>
-   <br/>
-   <%= link_to 'Novo', action: 'new' %>
+
+<!-- <p><%= link_to 'Novo Quiz', action: 'new' %></p> -->
+<p><%= link_to 'Novo Quiz', new_quiz_path %></p>

@@ -4,6 +4,7 @@ class CreateRespostas < ActiveRecord::Migration
       t.string :conteudo
       t.boolean :correta
 
+      t.integer :pergunta_id
       t.timestamps
     end
   end

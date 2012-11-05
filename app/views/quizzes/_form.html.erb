@@ -1,0 +1,27 @@
+<%= form_for @quiz do |f| %>
+	<% if @quiz.errors.any? %>
+		<div class = "error_messages">
+			<h2><%= pluralize(@quiz.errors.count, "error") %> impedem esse quiz de ser salvo:</h2>
+			<ul>
+				<% @quiz.errors.full_messages.each do |msg| %>
+				<li> <%=msg%> </li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
+	
+	<div class="field">
+		<%= f.label :titulo %><br />
+		<%= f.text_field :titulo %>
+	</div>
+	
+	<%= f.fields_for :perguntas do |builder| %>
+	<% render 'pergunta_fields', f:builder%>
+	<% end %>
+	<%= link_to_add_fields "Adicionar pergunta", f, :perguntas %>
+	
+	<div class="actions">
+		<%= f.submit %>
+	</div>
+<% end %>
+		

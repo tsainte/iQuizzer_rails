@@ -22,6 +22,12 @@ end
 
 gem 'jquery-rails'
 
+gem 'heroku'
+
+#only in production
+group :production do
+  gem 'thin' #robust webserver reccomended by heroku
+end
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

@@ -1,15 +1,3 @@
 <h1>Editando Quiz</h1>
-     <% if @quiz.errors.any? %>
-<ul>
-       <% @quiz.errors.full_messages.each do |msg| %>
-         <li><%= msg %></li>
-<% end %>
-</ul>
-<% end %>
-     <%= form_for :quiz, url: {action: 'update',
-           id: @quiz} do |f| %>
-       Titulo: <%= f.text_field :titulo %><br/>
 
-       <%= submit_tag 'Atualizar' %>
-     <% end %>
-     <%= link_to 'Voltar', action: 'index' %>
+<%= render "form" %>

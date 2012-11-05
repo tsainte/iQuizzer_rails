@@ -3,6 +3,7 @@ class CreatePerguntas < ActiveRecord::Migration
     create_table :perguntas do |t|
       t.string :conteudo
 
+      t.integer :quiz_id
       t.timestamps
     end
   end
