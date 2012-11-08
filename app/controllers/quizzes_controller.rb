@@ -33,13 +33,15 @@ class QuizzesController < ApplicationController
   # POST /quizzes.json
   def create
     @quiz = Quiz.new(params[:quiz])
-    if @quiz.save
-      format.html { redirect_to @quiz, :notice => 'Quiz was successfully created.' }
-      format.json { render :json => @quiz, :status => :created, :location => @quiz }
-    else
-     # render action: "new"
-     format.html { render :new }
-     format.json { render :json => @quiz.errors, :status => :unprocessable_entity }
+    respond_to do |format|
+      if @quiz.save
+        format.html { redirect_to @quiz, :notice => 'Quiz was successfully created.' }
+        format.json { render :json => @quiz, :status => :created, :location => @quiz }
+      else
+       # render action: "new"
+       format.html { render :new }
+       format.json { render :json => @quiz.errors, :status => :unprocessable_entity }
+      end
     end
   end
   
