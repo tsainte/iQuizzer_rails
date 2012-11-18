@@ -16,7 +16,7 @@ class QuizzesController < ApplicationController
     
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render :json => @quiz }
+      format.json { render :json => { :quiz => @quiz, :perguntas => @quiz.perguntas } } 
     end
   end
   
