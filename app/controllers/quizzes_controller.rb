@@ -13,6 +13,7 @@ class QuizzesController < ApplicationController
   # GET /quizzes/1.json
   def show
     @quiz = Quiz.find(params[:id])
+    
     respond_to do |format|
       format.html # index.html.erb
       format.json { render :json => @quiz }
@@ -54,11 +55,21 @@ class QuizzesController < ApplicationController
   # PUT /quizzes/1.json
   def update
     @quiz = Quiz.find(params[:id])
-    if (@quiz.update_attributes(params[:quiz]))
-      #redirect_to(action: "show", id: @quiz)
-      redirect_to @quiz, notice: "Sucesso!"
-    else
-      render :edit
+    #dup = duplicate!
+    perguntas_before = @quiz.perguntas.dup
+    
+    respond_to do |format|
+      if (@quiz.update_attributes(params[:quiz]))
+        
+        perguntas_after = @quiz.perguntas.dup
+        new_perguntas =  perguntas_after - perguntas_before
+        format.json { render :json => { :success => true, :quiz_id => @quiz.id, :perguntas => new_perguntas }, :status => :created, :location => @quiz }
+        #redirect_to(action: "show", id: @quiz)
+        #redirect_to @quiz, notice: "Sucesso!" --erro pode ser aqui
+        format.html { redirect_to @quiz, :notice => 'Quiz was successfully updated.' }
+      else
+        render :edit
+      end
     end
   end
   
