@@ -16,10 +16,19 @@ class QuizzesController < ApplicationController
     
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render :json => { :quiz => @quiz, :perguntas => @quiz.perguntas } } 
+      perguntas = mountPerguntas(@quiz.perguntas)
+      format.json { render :json => { :quiz => @quiz },  :include => { :perguntas => { :include =>  :respostas } } }
     end
   end
   
+  def mountPerguntas (perguntas)
+    arrayPerguntas = Array.new()
+    
+    perguntas.each do |pergunta|
+      
+
+    end
+  end
   # GET /quizzes/new
   # GET /quizzes/new.json
   def new 
