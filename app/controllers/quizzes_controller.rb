@@ -57,13 +57,32 @@ class QuizzesController < ApplicationController
     @quiz = Quiz.find(params[:id])
     #dup = duplicate!
     perguntas_before = @quiz.perguntas.dup
+    respostas_before = Array.new
+    
+    perguntas_before.each do |pergunta|
+      pergunta.respostas.each do |resposta|
+        respostas_before.push(resposta)
+        puts "respostaaa " << resposta.to_json
+      end
+    end
     
     respond_to do |format|
       if (@quiz.update_attributes(params[:quiz]))
         
         perguntas_after = @quiz.perguntas.dup
+        respostas_after = Array.new
+        
+        perguntas_after.each do |pergunta|
+          pergunta.respostas.each do |resposta|
+            respostas_after.push(resposta)
+          end
+        end
+        
         new_perguntas =  perguntas_after - perguntas_before
-        format.json { render :json => { :success => true, :quiz_id => @quiz.id, :perguntas => new_perguntas }, :status => :created, :location => @quiz }
+        new_respostas = respostas_after - respostas_before
+        
+        format.json { render :json => { :success => true, :quiz_id => @quiz.id, :perguntas => new_perguntas, :respostas => new_respostas }, :status => :created, :location => @quiz }
+
         #redirect_to(action: "show", id: @quiz)
         #redirect_to @quiz, notice: "Sucesso!" --erro pode ser aqui
         format.html { redirect_to @quiz, :notice => 'Quiz was successfully updated.' }
