@@ -1,0 +1,13 @@
+<h1>Jogos</h1>
+
+<% @jogos.each do |jogo| %>
+  <div class="article">
+
+	  <h2><%= link_to jogo.dia, jogo %></h2>
+	  
+
+  </div>
+<% end %>
+
+
+<p><%= link_to 'Novo Jogo', new_jogo_path %></p>

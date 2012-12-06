@@ -1,0 +1,22 @@
+<h1>Exibindo Jogo</h1>
+   <p>
+     <b>Dia: </b>
+     <%= @jogo.dia %>
+   </p>
+   <p>
+     <b>Hora: </b>
+     <%= @jogo.hora %>
+   </p>
+   <p>
+     <b>Pontos: </b>
+     <%= @jogo.pontos %>
+   </p>
+   
+   <%= form_for @jogo do |f| %>
+   <%= f.fields_for :resultados do |builder| %>
+     <%= render 'resultado_fields', f: builder %>
+   <% end %>
+
+   <% end %>
+   <%= link_to 'Editar', { action: 'edit', id: @jogo } %>
+   <%= link_to 'Voltar', { action: 'index' } %>

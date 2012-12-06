@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121204132422) do
+ActiveRecord::Schema.define(:version => 20121206144746) do
 
   create_table "dispositivos", :force => true do |t|
     t.string   "modelo"
@@ -56,11 +56,13 @@ ActiveRecord::Schema.define(:version => 20121204132422) do
     t.integer  "pergunta_id"
   end
 
-  create_table "resultados_pergunta", :force => true do |t|
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+  create_table "resultados", :force => true do |t|
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
     t.integer  "resposta_id"
     t.integer  "jogo_id"
+    t.string   "pergunta_conteudo"
+    t.string   "resposta_conteudo"
   end
 
   create_table "usuarios", :force => true do |t|
