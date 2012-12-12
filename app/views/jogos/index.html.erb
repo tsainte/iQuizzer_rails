@@ -2,8 +2,9 @@
 
 <% @jogos.each do |jogo| %>
   <div class="article">
-
-	  <h2><%= link_to jogo.dia, jogo %></h2>
+	  <%# @resposta = Resposta.find(jogo.resultados[0].resposta_id) %>
+	  <% str = "(" + jogo.id.to_s + ") " + jogo.dia + " " + jogo.hora %>
+	  <h2><%= link_to str, jogo %></h2>
 	  
 
   </div>

@@ -62,5 +62,6 @@ IQuizzer::Application.routes.draw do
    resources :jogos
    root to: 'jogos#index'
 
-
+   resources :usuarios
+   root to: 'usuarios#index'
 end

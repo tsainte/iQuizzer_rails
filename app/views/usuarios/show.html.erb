@@ -1,0 +1,21 @@
+ 
+   <h1>Exibindo Usuário</h1>
+      <p>
+        <b>Apelido: </b>
+        <%= @usuario.apelido %>
+		<p>
+        <b>Nome: </b>
+        <%= @usuario.nome %>
+		<p>
+        <b>Sobrenome: </b>
+        <%= @usuario.sobrenome %>
+		<p>
+        <b>Pontos de criador: </b>
+        <%= @usuario.pontos_criador %>
+		<p>
+        <b>Pontos de jogador: </b>
+        <%= @usuario.pontos_jogador %>
+		<p>
+   </p>
+      <%= link_to 'Editar', { action: 'edit', id: @usuario} %>
+      <%= link_to 'Voltar', { action: 'index' } %>

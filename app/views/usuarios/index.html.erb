@@ -1,0 +1,8 @@
+<h1>Usuários</h1>
+
+<% @usuarios.each do |usuario| %>
+  <div class="article">
+	  <h2><%= link_to usuario.apelido, usuario %></h2>
+<% end %>
+
+<p><%= link_to 'Novo Usuário', new_usuario_path %></p>
