@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121206144746) do
+ActiveRecord::Schema.define(:version => 20121213132937) do
 
   create_table "dispositivos", :force => true do |t|
     t.string   "modelo"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(:version => 20121206144746) do
     t.float    "pontos"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "usuario_id"
   end
 
   create_table "perguntas", :force => true do |t|
@@ -39,8 +40,12 @@ ActiveRecord::Schema.define(:version => 20121206144746) do
 
   create_table "quizzes", :force => true do |t|
     t.string   "titulo"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.integer  "usuario_id"
+    t.integer  "modojogo"
+    t.integer  "maxquestoes"
+    t.text     "descricao"
   end
 
   create_table "quizzes_usuarios", :id => false, :force => true do |t|
@@ -73,6 +78,7 @@ ActiveRecord::Schema.define(:version => 20121206144746) do
     t.float    "pontos_jogador"
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
+    t.string   "senha"
   end
 
 end

@@ -16,6 +16,18 @@
         <b>Pontos de jogador: </b>
         <%= @usuario.pontos_jogador %>
 		<p>
+	    
+		<b>Quizzes criados: </b>
+		<% @usuario.quizzes.each do |quiz|%>
+			<p><%= link_to quiz.titulo, quiz%> 
+		<% end %>
+
+	    <p><b>Histórico de jogos: </b>
+		<% @usuario.jogos.each do |jogo|%>
+			<% str = "(" + jogo.id.to_s + ") " + jogo.dia + " " + jogo.hora %>
+			<p><%= link_to str, jogo%> 
+		<% end %>
+		<br><br>
    </p>
       <%= link_to 'Editar', { action: 'edit', id: @usuario} %>
       <%= link_to 'Voltar', { action: 'index' } %>

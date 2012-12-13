@@ -1,7 +1,8 @@
 <fieldset>
     <%= f.label :pergunta_conteudo, "Pergunta" %><br />
-    <%= f.text_area :pergunta_conteudo %><br />
+    <%= f.text_area :pergunta_conteudo, :readonly => true %><br />
+	
     <%= f.label :resposta_conteudo, "Resposta selecionada" %><br />
-    <%= f.text_area :resposta_conteudo %><br />
+    <%= f.text_area :resposta_conteudo, :readonly => true %><br />
  
 </fieldset>

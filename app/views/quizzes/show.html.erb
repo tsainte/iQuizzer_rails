@@ -1,7 +1,13 @@
 <h1>Exibindo Quiz</h1>
    <p>
      <b>Titulo: </b>
-     <%= @quiz.titulo %>
+     <%= @quiz.titulo %><p>
+     <b>Criador: </b>
+     <%= link_to @quiz.usuario.apelido, @quiz.usuario %></h2>
+	 <p>
+	 <b>Quantidade de perguntas: </b>
+	 <%= @quiz.perguntas.count %><p>
+	 <%#= link_to @quiz.usuario.apelido, { action: 'usuario.show', id: @quiz.usuario } %>
 </p>
    <%= link_to 'Editar', { action: 'edit', id: @quiz } %>
    <%= link_to 'Voltar', { action: 'index' } %>

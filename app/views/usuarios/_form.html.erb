@@ -12,7 +12,11 @@
 
 	<div class="field">
 		<%= f.label :apelido %><br />
-		<%= f.text_field :apelido, :readonly => true %>
+		<% if @usuario.apelido.blank? then %>
+			<%= f.text_field :apelido, :required => true %>
+		<% else %>
+			<%= f.text_field :apelido, :readonly => true, :required => true %>
+		<% end %>
 	</div>
 	<div class="field">
 		<%= f.label :nome %><br />
@@ -23,6 +27,12 @@
 		<%= f.label :sobrenome %><br />
 		<%= f.text_field  :sobrenome %>
 	</div>
+	
+	<div class="field">
+		<%= f.label :senha %><br />
+		<%= f.password_field  :senha, :required => true  %>
+	</div>
+
 	
 	<div class="actions">
 		<%= f.submit %>
