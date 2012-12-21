@@ -1,5 +1,5 @@
 class Jogo < ActiveRecord::Base
-  attr_accessible :dia, :hora, :pontos, :resultados_attributes
+  attr_accessible :dia, :hora, :pontos, :resultados_attributes, :usuario_id
   
   has_many :resultados
   belongs_to :usuario

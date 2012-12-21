@@ -1,6 +1,6 @@
 class Quiz < ActiveRecord::Base
   #modojogo: 1- random, 2- ordenate
-  attr_accessible :titulo, :perguntas_attributes, :modojogo, :maxquestoes, :descricao
+  attr_accessible :titulo, :perguntas_attributes, :modojogo, :maxquestoes, :descricao, :usuario_id
   
   #has_and_belongs_to_many :usuarios
   belongs_to :usuario

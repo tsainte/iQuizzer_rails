@@ -82,4 +82,19 @@ class UsuariosController < ApplicationController
       format.html { redirect_to usuarios_url }
     end
   end
+  
+  # PUT /usuarios/validate
+  # PUT /usuarios/validate
+  def validate
+    @usuario = Usuario.find_by_apelido(params[:apelido])
+    
+    success = false
+    if @usuario.senha == params[:senha] then
+      success = true
+    end
+    respond_to do |format|
+      format.json { render :json => { :success => success, :id => @usuario.id } }
+      format.html { redirect_to usuarios_url }
+    end
+  end
 end

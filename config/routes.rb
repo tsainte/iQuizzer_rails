@@ -61,7 +61,14 @@ IQuizzer::Application.routes.draw do
     
    resources :jogos
    root to: 'jogos#index'
+   
+   resources :usuarios do
+     collection do
+       put 'validate'
+     end
+   end
 
+   
    resources :usuarios
    root to: 'usuarios#index'
 end

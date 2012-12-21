@@ -36,6 +36,7 @@ class JogosController < ApplicationController
   # POST /jogos.json
   def create
     @jogo = Jogo.new(params[:jogo])
+    #@jogo.usuario_id = params[:usuario_id].to_i
     respond_to do |format|
       if @jogo.save
         format.json { render :json => @jogo, :status => :created, :location => @jogo }
