@@ -22,7 +22,7 @@ group :assets do
 end
 gem 'twitter-bootstrap-rails'
 gem 'less-rails'
-
+gem 'libv8', '~> 3.11.8'
 gem 'therubyracer'
 
 gem 'jquery-rails'
