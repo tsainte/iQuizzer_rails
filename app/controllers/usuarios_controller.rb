@@ -94,7 +94,8 @@ class UsuariosController < ApplicationController
     end
     respond_to do |format|
       format.json { render :json => { :success => success, :id => @usuario.id } }
-      format.html { redirect_to usuarios_url }
+     # format.html { redirect_to usuarios_url }
+      format.html { render :json => { :success => success, :id => @usuario.id } }
     end
   end
 end
