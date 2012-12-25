@@ -1,9 +1,26 @@
 <h1>Usuários</h1>
 
-<% @usuarios.each do |usuario| %>
-  <div class="article">
-	  <h2><%= link_to usuario.apelido, usuario %></h2>
-  </div>
+<table class="table table-hover">
+  	<thead>
+      <tr>
+        <th>#</th>
+        <th>Apelido</th>
+        <th>Pontos criador</th>
+		<th>Pontos jogador</th>
+      </tr>
+    </thead>
+    <tbody>
+		<% @usuarios.each do |usuario| %>
+		<tr>
+			<td> <%= usuario.id %> </td>
+			<td><%= link_to usuario.apelido, usuario %> </td>
+			<td><%= usuario.pontos_criador %> </td>
+			<td><%= usuario.pontos_jogador %> </td>
+		</tr>
+		<% end %>
+    </tbody>
+  </table>
+<%= link_to new_usuario_path do %>
+	<button class="btn btn-large btn-block btn-primary" type="button">Criar usuário</button>
 <% end %>
 
-<p><%= link_to 'Novo Usuário', new_usuario_path %></p>

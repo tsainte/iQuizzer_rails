@@ -1,14 +1,26 @@
 <h1>Jogos</h1>
 
-<% @jogos.each do |jogo| %>
-  <div class="article">
-	  <%# @resposta = Resposta.find(jogo.resultados[0].resposta_id) %>
-	  <% str = "(" + jogo.id.to_s + ") " + jogo.dia + " " + jogo.hora %>
-	  <h2><%= link_to str, jogo %></h2>
-	  
 
-  </div>
-<% end %>
+<p><b>Histórico de jogos: </b>
+<table class="table table-hover">
+	<thead>
+    <tr>
+      <th>#</th>
+      <th>Dia/hora</th>
+      <th>Quiz</th>
+	  <th>Jogador</th>
+    </tr>
+  </thead>
+  <tbody>
+	<% @jogos.each do |jogo|%>
+		<tr>
+			<td> <%= jogo.id %> </td>
+			<% diahora = jogo.dia + " " + jogo.hora %>
+			<td><%= link_to diahora, jogo%> </td>
+			<td> - </td>
+			<td> <%= link_to jogo.usuario.apelido, jogo.usuario%></td>
+		</tr>
+	<% end %>
+  </tbody>
+</table>
 
-
-<p><%= link_to 'Novo Jogo', new_jogo_path %></p>

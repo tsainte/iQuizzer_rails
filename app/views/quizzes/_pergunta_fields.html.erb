@@ -2,9 +2,11 @@
   <%= f.label :conteudo, "Pergunta" %><br />
   <%= f.text_area :conteudo %><br />
   <%= f.check_box :_destroy %>
-  <%= f.label :_destroy, "Remove Question" %>
+  <%= f.label :_destroy, "(check para remover)" %>
   <%= f.fields_for :respostas do |builder| %>
     <%= render 'resposta_fields', f: builder %>
   <% end %>
-  <%= link_to_add_fields "Adicionar resposta", f, :respostas %>
+
+  <%= link_to_add_fields '<button class="btn" type="button"><i class="icon-plus"></i> Adicionar resposta</button>'.html_safe, f, :respostas %>
+  
 </fieldset>>

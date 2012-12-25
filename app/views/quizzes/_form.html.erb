@@ -28,10 +28,10 @@
 	<% render 'pergunta_fields', f:builder%>
 	<% end %>
 	<br>
-	<%= link_to_add_fields "Adicionar pergunta", f, :perguntas %>
-	
+	<%= link_to_add_fields '<button class="btn" type="button"><i class="icon-plus"></i> Adicionar pergunta</button>'.html_safe, f, :perguntas %>
+
 	<div class="actions">
-		<%= f.submit %>
+		<%= f.submit :class => "btn btn-large btn-block btn-primary", :value => "Salvar" %>
 	</div>
 	
 <% end %>
