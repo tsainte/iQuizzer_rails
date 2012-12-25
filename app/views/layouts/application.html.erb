@@ -1,14 +1,48 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>IQuizzer</title>
+  <title>iQuizzer</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<%= yield %>
+	<div class="navbar navbar-fixed-top">
+	    <div class="navbar-inner">
+	      <div class="container">
+	        <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+	          <span class="icon-bar"></span>
+	          <span class="icon-bar"></span>
+	          <span class="icon-bar"></span>
+	        </a>
+	        <a class="brand" href="\">iQuizzer</a>
+	        <div class="nav-collapse">
+	          <ul class="nav">
+  				<form class="navbar-search pull-left">
+  				  <input type="text" class="search-query" placeholder="Quizzes...">
+  				</form>
+	            <li><%= link_to "Quizzes", quizzes_path %></li>
+	            <li><%= link_to "Usuários", usuarios_path %></li>
+				<li><%= link_to "Resultados", jogos_path %></li>
+	            <li><%= link_to "Logout" %></li>
+	          </ul>
+	        </div>
+	      </div>
+	    </div>
+	  </div>
+
+
+
+    <div class="container">
+      <div class="row">
+        <div class="span9"><%= yield %></div>
+        <div class="span3">
+          <h2>Sobre</h2>
+		  Esse aplicativo é parte de uma plataforma experimental utilizando REST em aplicativos móveis iOS/Android, para trabalho de conclusão de curso em Engenharia de Teleinformática da Universidade Federal do Ceará. 
+        </div>
+      </div>
+    </div>
 
 </div>
 </body>

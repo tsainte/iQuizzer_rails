@@ -10,31 +10,29 @@
 		</div>
 	<% end %>
 	
-	<div class="field">
-		<%= f.label :título %><br />
+		<%= f.label :título %>
 		<%= f.text_field :titulo %>
-	</div>
-	<div class="field">
-		<%= f.label :descrição %><br />
+
+		<%= f.label :descrição %>
 		<%= f.text_area :descricao %>
-	</div>
-	<div class="field">
-		<%= f.label :"Modo de jogo" %><br />
+
+		<%= f.label :"Modo de jogo" %>
 		
 		<%= f.select :modojogo, options_for_select([["Aleatório", 1], ["Em ordem", 2]], @quiz.modojogo) %>
-	</div>
-	<div class="field">
-		<%= f.label :"Questões por jogo" %><br />
+
+		<%= f.label :"Questões por jogo" %>
 		<%= f.text_field :maxquestoes %>
-	</div>
+
 	
 	<%= f.fields_for :perguntas do |builder| %>
 	<% render 'pergunta_fields', f:builder%>
 	<% end %>
+	<br>
 	<%= link_to_add_fields "Adicionar pergunta", f, :perguntas %>
 	
 	<div class="actions">
 		<%= f.submit %>
 	</div>
+	
 <% end %>
 		

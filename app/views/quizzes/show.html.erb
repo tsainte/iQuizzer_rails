@@ -1,14 +1,43 @@
-<h1>Exibindo Quiz</h1>
+<h1><%= @quiz.titulo %></h1>
    <p>
-     <b>Titulo: </b>
-     <%= @quiz.titulo %><p>
-     <b>Criador: </b>
-     <%= link_to @quiz.usuario.apelido, @quiz.usuario %></h2>
-	 <p>
-	 <b>Quantidade de perguntas: </b>
-	 <%= @quiz.perguntas.count %><p>
-	 <%#= link_to @quiz.usuario.apelido, { action: 'usuario.show', id: @quiz.usuario } %>
+	   <%= @quiz.descricao%><br>
+     <p>	<b>Criador: </b>
+     	<%= link_to @quiz.usuario.apelido, @quiz.usuario %></h2>
+	 	<p>
+		 <b>Modo de jogo:</b>
+		 <%= @quiz.modojogo%><p>
+		 <b>Máximo de perguntas por jogo:</b>
+		 <%= @quiz.maxquestoes%>
+ 		<table class="table table-hover">
+         	<thead>
+             <tr>
+               <th>#</th>
+               <th>Pergunta</th>
+               <th>#Respostas</th>
+             </tr>
+           </thead>
+           <tbody>
+   			<% @quiz.perguntas.each do |pergunta|%>
+			<% resps = ""%>
+			<% virg = ""%>
+			<% pergunta.respostas.each do |resposta|%>
+			<% resps += virg +resposta.conteudo%>
+			<% virg = ", "%>
+			<% end %>
+ 				<tr class="tr-popover"
+   		          data-content= "<%= resps %>" >
+ 					<td> <%= pergunta.id %> </td>
+ 					<td><%=  pergunta.conteudo %> </td>
+   					<td> <%= pergunta.respostas.count  %></td>
+ 				<tr>
+   			<% end %>
+           </tbody>
+         </table>
+		 
+
 </p>
-   <%= link_to 'Editar', { action: 'edit', id: @quiz } %>
-   <%= link_to 'Voltar', { action: 'index' } %>
+<%= link_to ( { action: 'edit', id: @quiz }) do %>
+	<button class="btn btn-large btn-block btn-primary" type="button">Editar</button>
+<% end %>
+
    

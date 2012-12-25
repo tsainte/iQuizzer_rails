@@ -1,13 +1,31 @@
 <h1>Quizzes</h1>
 
-<% @quizzes.each do |quiz| %>
-  <div class="article">
-	  <!-- <h2><%= link_to quiz.titulo, action: 'show', id: quiz %></h2>  -->
-	  <h2><%= link_to quiz.titulo, quiz %></h2>
-	  
-    <%= pluralize(quiz.perguntas.size, "pergunta") %>
-  </div>
+<table class="table table-hover">
+	<thead>
+    <tr>
+      <th>#</th>
+      <th>Título</th>
+      <th>Descrição</th>
+	  <th>Criador</th>
+	  <th>#Perguntas</th>
+    </tr>
+  </thead>
+  <tbody>
+	<% @quizzes.each do |quiz| %>
+		<tr>
+			<td> <%= quiz.id %> </td>
+			<td> <%= link_to quiz.titulo, quiz %> </td>
+			<td> <%= quiz.descricao %> </td>
+			<td> <%= link_to quiz.usuario.apelido, quiz.usuario %> </td>
+			<td><%= quiz.perguntas.size %> </td>
+		</tr>
+	<% end %>
+  </tbody>
+</table>
+
+<%= link_to new_quiz_path do %>
+	<button class="btn btn-large btn-block btn-primary" type="button">Criar quiz</button>
 <% end %>
 
-<!-- <p><%= link_to 'Novo Quiz', action: 'new' %></p> -->
-<p><%= link_to 'Novo Quiz', new_quiz_path %></p>
+
+

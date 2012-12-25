@@ -1,14 +1,8 @@
  
-   <h1>Exibindo Usuário</h1>
+   <h1><%= @usuario.apelido %></h1>
       <p>
-        <b>Apelido: </b>
-        <%= @usuario.apelido %>
-		<p>
         <b>Nome: </b>
-        <%= @usuario.nome %>
-		<p>
-        <b>Sobrenome: </b>
-        <%= @usuario.sobrenome %>
+        <%= @usuario.nome + " " + @usuario.sobrenome%>
 		<p>
         <b>Pontos de criador: </b>
         <%= @usuario.pontos_criador %>
@@ -16,18 +10,50 @@
         <b>Pontos de jogador: </b>
         <%= @usuario.pontos_jogador %>
 		<p>
-	    
+		<%= link_to  ({ action: 'edit', id: @usuario})  do %>
+		   <button class="btn btn-large btn-block btn-primary" type="button">Editar dados</button>
+		 <% end %>
+		 <br>
 		<b>Quizzes criados: </b>
-		<% @usuario.quizzes.each do |quiz|%>
-			<p><%= link_to quiz.titulo, quiz%> 
-		<% end %>
+		<table class="table table-hover">
+        	<thead>
+            <tr>
+              <th>#</th>
+              <th>Nome</th>
+              <th>Descrição</th>
+            </tr>
+          </thead>
+          <tbody>
+  			<% @usuario.quizzes.each do |quiz|%>
+				<tr>
+					<td> <%= quiz.id %> </td>
+					<td><%= link_to quiz.titulo, quiz%> </td>
+  					<td> <%= quiz.descricao  %></td>
+				<tr>
+  			<% end %>
+          </tbody>
+        </table>
 
+		<br>
 	    <p><b>Histórico de jogos: </b>
-		<% @usuario.jogos.each do |jogo|%>
-			<% str = "(" + jogo.id.to_s + ") " + jogo.dia + " " + jogo.hora %>
-			<p><%= link_to str, jogo%> 
-		<% end %>
+		<table class="table table-hover">
+        	<thead>
+            <tr>
+              <th>#</th>
+              <th>Dia/hora</th>
+              <th>Quiz</th>
+            </tr>
+          </thead>
+          <tbody>
+	  		<% @usuario.jogos.each do |jogo|%>
+				<tr>
+					<td> <%= jogo.id %> </td>
+	  				<% diahora = jogo.dia + " " + jogo.hora %>
+	  				<td><%= link_to diahora, jogo%> </td>
+				</tr>
+	  		<% end %>
+          </tbody>
+        </table>
+
 		<br><br>
    </p>
-      <%= link_to 'Editar', { action: 'edit', id: @usuario} %>
-      <%= link_to 'Voltar', { action: 'index' } %>
