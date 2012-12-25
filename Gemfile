@@ -29,6 +29,7 @@ gem 'jquery-rails'
 
 gem 'heroku'
 
+gem 'devise'
 #only in production
 group :production do
   gem 'thin' #robust webserver reccomended by heroku
