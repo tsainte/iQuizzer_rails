@@ -10,9 +10,11 @@
         <b>Pontos de jogador: </b>
         <%= @usuario.scoreplayer %>
 		<p>
+			<% if @usuario.id  == current_user.id then %>
 		<%= link_to  ({ action: 'edit', id: @usuario})  do %>
 		   <button class="btn btn-large btn-block btn-primary" type="button">Editar dados</button>
 		 <% end %>
+		 <%end%>
 		 <br>
 		<b>Quizzes criados: </b>
 		<table class="table table-hover">

@@ -36,8 +36,10 @@
 		 
 
 </p>
-<%= link_to ( { action: 'edit', id: @quiz }) do %>
-	<button class="btn btn-large btn-block btn-primary" type="button">Editar</button>
-<% end %>
+<% if @quiz.user.id  == current_user.id then %>
+	<%= link_to ( { action: 'edit', id: @quiz }) do %>
+		<button class="btn btn-large btn-block btn-primary" type="button">Editar</button>
+	<% end %>
+<%end%>
 
    
