@@ -18,7 +18,7 @@
 			<% diahora = jogo.dia + " " + jogo.hora %>
 			<td><%= link_to diahora, jogo%> </td>
 			<td> - </td>
-			<td> <%= link_to jogo.usuario.apelido, jogo.usuario%></td>
+			<td> <%= link_to jogo.user.username, jogo.user%></td>
 		</tr>
 	<% end %>
   </tbody>

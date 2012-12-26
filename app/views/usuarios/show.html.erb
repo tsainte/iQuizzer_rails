@@ -1,14 +1,14 @@
  
-   <h1><%= @usuario.apelido %></h1>
+   <h1><%= @usuario.username %></h1>
       <p>
         <b>Nome: </b>
-        <%= @usuario.nome + " " + @usuario.sobrenome%>
+        <%= @usuario.firstname + " " + @usuario.lastname%>
 		<p>
         <b>Pontos de criador: </b>
-        <%= @usuario.pontos_criador %>
+        <%= @usuario.scorecreator %>
 		<p>
         <b>Pontos de jogador: </b>
-        <%= @usuario.pontos_jogador %>
+        <%= @usuario.scoreplayer %>
 		<p>
 		<%= link_to  ({ action: 'edit', id: @usuario})  do %>
 		   <button class="btn btn-large btn-block btn-primary" type="button">Editar dados</button>

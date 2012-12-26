@@ -15,6 +15,12 @@ class User < ActiveRecord::Base
   # This is in addition to a real persisted field like 'username'
   attr_accessor :login
   
+  has_many :dispositivos
+  has_many :jogos
+  #has_and_belongs_to_many :quizzes
+  has_many :quizzes
+  
+  
   #https://github.com/plataformatec/devise/wiki/How-To:-Allow-users-to-sign-in-using-their-username-or-email-address
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup

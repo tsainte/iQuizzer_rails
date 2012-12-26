@@ -73,6 +73,10 @@ IQuizzer::Application.routes.draw do
    end
 
    
-   resources :usuarios
-   root to: 'usuarios#index'
-end
+   #resources :users
+   #root to: 'usuarios#index'
+   
+   resources :users, :controller => "usuarios"
+
+         
+ end

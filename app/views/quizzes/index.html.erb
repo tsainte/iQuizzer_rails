@@ -16,7 +16,7 @@
 			<td> <%= quiz.id %> </td>
 			<td> <%= link_to quiz.titulo, quiz %> </td>
 			<td> <%= quiz.descricao %> </td>
-			<td> <%= link_to quiz.usuario.apelido, quiz.usuario %> </td>
+			<td> <%= link_to quiz.user.username, quiz.user %> </td>
 			<td><%= quiz.perguntas.size %> </td>
 		</tr>
 	<% end %>

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121225221046) do
+ActiveRecord::Schema.define(:version => 20121226025921) do
 
   create_table "dispositivos", :force => true do |t|
     t.string   "modelo"
@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(:version => 20121225221046) do
     t.string   "device_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.integer  "usuario_id"
+    t.integer  "user_id"
   end
 
   create_table "jogos", :force => true do |t|
@@ -28,7 +28,7 @@ ActiveRecord::Schema.define(:version => 20121225221046) do
     t.float    "pontos"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.integer  "usuario_id"
+    t.integer  "user_id"
   end
 
   create_table "perguntas", :force => true do |t|
@@ -42,7 +42,7 @@ ActiveRecord::Schema.define(:version => 20121225221046) do
     t.string   "titulo"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
-    t.integer  "usuario_id"
+    t.integer  "user_id"
     t.integer  "modojogo"
     t.integer  "maxquestoes"
     t.text     "descricao"

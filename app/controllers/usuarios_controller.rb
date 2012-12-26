@@ -3,7 +3,7 @@ class UsuariosController < ApplicationController
   # GET /usuarios
   # GET /usuarios.json
   def index
-    @usuarios = Usuario.all
+    @usuarios = User.all
     respond_to do |format|
       format.html # index.html.erb
       format.json { render :json => @usuarios }
@@ -13,7 +13,7 @@ class UsuariosController < ApplicationController
   # GET /usuarios/1
   # GET /usuarios/1.json
   def show
-    @usuario = Usuario.find(params[:id])
+    @usuario = User.find(params[:id])
     
     respond_to do |format|
       format.html # index.html.erb
@@ -26,7 +26,7 @@ class UsuariosController < ApplicationController
   # GET /usuarios/new
   # GET /usuarios/new.json
   def new 
-    @usuario = Usuario.new
+    @usuario = User.new
     respond_to do |format|
       format.html # index.html.erb
       format.json { render :json => @usuario }
@@ -36,7 +36,7 @@ class UsuariosController < ApplicationController
   # POST /usuarios
   # POST /usuarios.json
   def create
-    @usuario = Usuario.new(params[:usuario])
+    @usuario = User.new(params[:usuario])
     respond_to do |format|
       if @usuario.save
         format.json { render :json => @usuario, :status => :created, :location => @usuario }
@@ -51,13 +51,13 @@ class UsuariosController < ApplicationController
   
   # GET /usuarios/1/edit
   def edit
-    @usuario = Usuario.find(params[:id]) 
+    @usuario = User.find(params[:id]) 
   end
   
   # PUT /usuarios/1
   # PUT /usuarios/1.json
   def update
-    @usuario = Usuario.find(params[:id])
+    @usuario = User.find(params[:id])
     
     respond_to do |format|
       if (@usuario.update_attributes(params[:usuario]))
@@ -74,7 +74,7 @@ class UsuariosController < ApplicationController
   # DELETE /usuarios/1
   # DELETE /usuarios/1.json
   def destroy
-    @usuario = Usuario.find(params[:id])
+    @usuario = User.find(params[:id])
     @usuario.destroy
     
     #redirect_to(action: "index")
@@ -87,7 +87,7 @@ class UsuariosController < ApplicationController
   # PUT /usuarios/validate
   # PUT /usuarios/validate
   def validate
-    @usuario = Usuario.find_by_apelido(params[:apelido])
+    @usuario = User.find_by_apelido(params[:apelido])
     
     success = false
     if @usuario.senha == params[:senha] then

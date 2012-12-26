@@ -13,9 +13,9 @@
 		<% @usuarios.each do |usuario| %>
 		<tr>
 			<td> <%= usuario.id %> </td>
-			<td><%= link_to usuario.apelido, usuario %> </td>
-			<td><%= usuario.pontos_criador %> </td>
-			<td><%= usuario.pontos_jogador %> </td>
+			<td><%= link_to usuario.username, usuario %></td>
+			<td><%= usuario.scorecreator %> </td>
+			<td><%= usuario.scoreplayer%> </td>
 		</tr>
 		<% end %>
     </tbody>
