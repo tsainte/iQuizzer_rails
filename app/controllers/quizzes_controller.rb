@@ -34,6 +34,7 @@ class QuizzesController < ApplicationController
   # GET /quizzes/new.json
   def new 
     @quiz = Quiz.new
+    #pergunta = @quiz.perguntas.build
     respond_to do |format|
       format.html # index.html.erb
       format.json { render :json => @quiz }
@@ -44,8 +45,12 @@ class QuizzesController < ApplicationController
   # POST /quizzes.json
   def create
     @quiz = Quiz.new(params[:quiz])
+    if request.format == :html then
+      @quiz.user_id = current_user.id
+    end
     respond_to do |format|
-      if @quiz.save
+
+      if @quiz.save!
         format.json { render :json => @quiz, :status => :created, :location => @quiz }
         format.html { redirect_to @quiz, :notice => 'Quiz was successfully created.' }
       else
@@ -72,7 +77,6 @@ class QuizzesController < ApplicationController
     perguntas_before.each do |pergunta|
       pergunta.respostas.each do |resposta|
         respostas_before.push(resposta)
-        puts "respostaaa " << resposta.to_json
       end
     end
     
@@ -93,8 +97,6 @@ class QuizzesController < ApplicationController
         
         format.json { render :json => { :success => true, :quiz_id => @quiz.id, :perguntas => new_perguntas, :respostas => new_respostas }, :status => :created, :location => @quiz }
 
-        #redirect_to(action: "show", id: @quiz)
-        #redirect_to @quiz, notice: "Sucesso!" --erro pode ser aqui
         format.html { redirect_to @quiz, :notice => 'Quiz was successfully updated.' }
       else
         render :edit

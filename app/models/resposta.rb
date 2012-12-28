@@ -3,6 +3,6 @@ class Resposta < ActiveRecord::Base
   
   belongs_to :pergunta
   
-  validates_presence_of :pergunta_id
-  validates_associated :pergunta
+  #validates_presence_of :pergunta_id
+  #validates_associated :pergunta
 end

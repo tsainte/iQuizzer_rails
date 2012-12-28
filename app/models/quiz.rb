@@ -7,5 +7,5 @@ class Quiz < ActiveRecord::Base
   
   has_many :perguntas
   
-  accepts_nested_attributes_for :perguntas, allow_destroy: true
+  accepts_nested_attributes_for :perguntas, allow_destroy: true, update_only: true
 end

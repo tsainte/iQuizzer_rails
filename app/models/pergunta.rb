@@ -4,8 +4,8 @@ class Pergunta < ActiveRecord::Base
   belongs_to :quiz
   has_many :respostas
   
-  validates_presence_of :quiz_id
-  validates_associated :quiz
+  #validates_presence_of :quiz_id
+ # validates_associated :quiz
   
   accepts_nested_attributes_for :respostas, allow_destroy: true
 end
