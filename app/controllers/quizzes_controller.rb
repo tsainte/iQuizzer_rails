@@ -73,7 +73,11 @@ class QuizzesController < ApplicationController
     score = squiz + sperg
     
     user = @quiz.user
-    user.scorecreator = user.scorecreator + score
+    if user.scorecreator == nil then
+      user.scorecreator = 0 + score
+    else
+      user.scorecreator = scorecreator + score
+    end
     user.save
   end
   # GET /quizzes/1/edit

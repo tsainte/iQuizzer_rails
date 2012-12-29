@@ -52,7 +52,11 @@ class JogosController < ApplicationController
   end
   def incrementUser
     user= @jogo.user
-    user.scoreplayer = user.scoreplayer + @jogo.pontos
+    if user.scoreplayer == nil then
+      user.scoreplayer = 0 + @jogo.pontos
+    else
+      user.scoreplayer = user.scoreplayer + @jogo.pontos
+    end
     user.save
   end
   # GET /jogos/1/edit
