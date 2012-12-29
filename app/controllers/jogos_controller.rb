@@ -40,6 +40,7 @@ class JogosController < ApplicationController
     #@jogo.usuario_id = params[:usuario_id].to_i
     respond_to do |format|
       if @jogo.save
+        incrementUser()
         format.json { render :json => @jogo, :status => :created, :location => @jogo }
         format.html { redirect_to @jogo, :notice => 'Jogo was successfully created.' }
       else
@@ -49,7 +50,11 @@ class JogosController < ApplicationController
       end
     end
   end
-  
+  def incrementUser
+    user= @jogo.user
+    user.scoreplayer = user.scoreplayer + @jogo.pontos
+    user.save
+  end
   # GET /jogos/1/edit
   def edit
     @jogo = Jogo.find(params[:id]) 

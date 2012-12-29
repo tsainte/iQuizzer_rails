@@ -49,8 +49,9 @@ class QuizzesController < ApplicationController
       @quiz.user_id = current_user.id
     end
     respond_to do |format|
-
-      if @quiz.save!
+      
+      if @quiz.save
+        incrementPoints(:new,0)
         format.json { render :json => @quiz, :status => :created, :location => @quiz }
         format.html { redirect_to @quiz, :notice => 'Quiz was successfully created.' }
       else
@@ -60,7 +61,21 @@ class QuizzesController < ApplicationController
       end
     end
   end
-  
+  def incrementPoints(mode, qtdperg)
+    
+    if mode == :new then
+      squiz = 100
+      sperg = 20 * @quiz.perguntas.count
+    else
+      squiz = 0
+      sperg = 20 * qtdperg
+    end
+    score = squiz + sperg
+    
+    user = @quiz.user
+    user.scorecreator = user.scorecreator + score
+    user.save
+  end
   # GET /quizzes/1/edit
   def edit
     @quiz = Quiz.find(params[:id]) 
@@ -95,6 +110,7 @@ class QuizzesController < ApplicationController
         new_perguntas =  perguntas_after - perguntas_before
         new_respostas = respostas_after - respostas_before
         
+        incrementPoints(:edit, new_perguntas.count)
         format.json { render :json => { :success => true, :quiz_id => @quiz.id, :perguntas => new_perguntas, :respostas => new_respostas }, :status => :created, :location => @quiz }
 
         format.html { redirect_to @quiz, :notice => 'Quiz was successfully updated.' }

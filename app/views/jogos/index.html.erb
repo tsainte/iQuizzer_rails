@@ -9,6 +9,7 @@
       <th>Dia/hora</th>
       <th>Quiz</th>
 	  <th>Jogador</th>
+	  <th>Pontos</th>
     </tr>
   </thead>
   <tbody>
@@ -17,8 +18,11 @@
 			<td> <%= jogo.id %> </td>
 			<% diahora = jogo.dia + " " + jogo.hora %>
 			<td><%= link_to diahora, jogo%> </td>
-			<td> - </td>
+			
+			<% quiz = Resposta.find(jogo.resultados[0].resposta_id).pergunta.quiz %>
+			<td> <%=  link_to quiz.titulo, quiz  %> </td>
 			<td> <%= link_to jogo.user.username, jogo.user%></td>
+			<td> <%= jogo.pontos %> </td>
 		</tr>
 	<% end %>
   </tbody>
