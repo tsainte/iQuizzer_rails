@@ -76,7 +76,7 @@ class QuizzesController < ApplicationController
     if user.scorecreator == nil then
       user.scorecreator = 0 + score
     else
-      user.scorecreator = scorecreator + score
+      user.scorecreator = user.scorecreator + score
     end
     user.save
   end
