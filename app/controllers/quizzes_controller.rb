@@ -47,6 +47,8 @@ class QuizzesController < ApplicationController
     @quiz = Quiz.new(params[:quiz])
     if request.format == :html then
       @quiz.user_id = current_user.id
+    else
+        @quiz.user_id = params[:user_id]
     end
     respond_to do |format|
       
