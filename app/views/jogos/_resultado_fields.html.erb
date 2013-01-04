@@ -1,4 +1,10 @@
-<fieldset>
+<% r = Resposta.find(f.object.resposta_id) %>
+<% if r.correta then %>
+<% color = "green" %>
+<% else %>
+<% color = "red" %>
+<% end %>
+<fieldset style= <%= "border-color:"+color+";" %> >
     <%= f.label :pergunta_conteudo, "Pergunta" %><br />
     <%= f.text_area :pergunta_conteudo, :readonly => true %><br />
 	

@@ -5,7 +5,14 @@
      	<%= link_to @quiz.user.username, @quiz.user %></h2>
 	 	<p>
 		 <b>Modo de jogo:</b>
-		 <%= @quiz.modojogo%><p>
+		 <%
+		 if @quiz.modojogo == 1 then
+			 modojogo = "Aleatório"
+		 else
+			 modojogo = "Em ordem"
+		 end
+		 %>
+		 <%= modojogo %><p>
 		 <b>Máximo de perguntas por jogo:</b>
 		 <%= @quiz.maxquestoes%>
  		<table class="table table-hover">
